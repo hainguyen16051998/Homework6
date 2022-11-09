@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class MainRun {
 
     public static Reader[] readers = new Reader[100];
-    public static Book[] books = new Book[100];
+    public static BookInformation[] books = new BookInformation[100];
 
     public static void main(String[] args) {
         while (true) {
@@ -55,14 +55,13 @@ public class MainRun {
         System.out.println("Nhập số lượng sách muốn thêm mới: ");
         int newBook = new Scanner(System.in).nextByte();
         for (int i = 0; i < newBook; i++) {
-            BookInformation newBook = new BookInformation();
-            newBook.nhapThongTinSach();
-            saveBook(newBook);
+            BookInformation book = new BookInformation();
+            book.nhapThongTinSach();
+            saveBook(book);
         }
     }
 
-
-    private static void saveBook(Book book) {
+    private static void saveBook(BookInformation book) {
         for (int i = 0; i < books.length; i++) {
             if (books[i] == null) {
                 books[i] = book;
@@ -70,6 +69,7 @@ public class MainRun {
             }
         }
     }
+
 
     private static void showAllReader() {
         for (int i = 0; i < readers.length; i++) {
